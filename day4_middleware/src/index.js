@@ -71,7 +71,7 @@ app.use(compression());
 // const prodController = require('./controller/product.controller');
 // app.use('/product', productMiddelware, prodController);
 
-// var morgan = require('morgan');
+var morgan = require('morgan');
 // morgan.token('type', function (req, res) {
 //   return req.headers['content-type'];
 // });
@@ -100,8 +100,8 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-//file upload
-//MULTER
+// //file upload
+// //MULTER
 const multer = require('multer');
 
 const fileStorageEngine = multer.diskStorage({
