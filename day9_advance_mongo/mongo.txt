@@ -1,0 +1,100 @@
+db.showdatabases
+
+use assignment
+
+db.users.inserOne({first_name:"Abc",last_name:"Xyz",email:"abc@gmail.com",gender:"male",ip_address:"27:0:0:1",age:26})
+
+db.users.inserMany([
+{first_name:"Abc",last_name:"Xyz",email:"abc@gmail.com",gender:"male",ip_address:"27:0:0:1",age:26},{first_name:"Abc",last_name:"Xyz",email:"abc@gmail.com",gender:"male",ip_address:"27:0:0:1",age:26},{first_name:"Abc",last_name:"Xyz",email:"abc@gmail.com",gender:"male",ip_address:"27:0:0:1",age:26},{first_name:"Abc",last_name:"Xyz",email:"abc@gmail.com",gender:"male",ip_address:"27:0:0:1",age:26},{first_name:"Abc",last_name:"Xyz",email:"abc@gmail.com",gender:"male",ip_address:"27:0:0:1",age:26},{first_name:"Abc",last_name:"Xyz",email:"abc@gmail.com",gender:"male",ip_address:"27:0:0:1",age:26},{first_name:"Abc",last_name:"Xyz",email:"abc@gmail.com",gender:"male",ip_address:"27:0:0:1",age:26},{first_name:"Abc",last_name:"Xyz",email:"abc@gmail.com",gender:"male",ip_address:"27:0:0:1",age:26},{first_name:"Abc",last_name:"Xyz",email:"abc@gmail.com",gender:"male",ip_address:"27:0:0:1",age:26},{first_name:"Abc",last_name:"Xyz",email:"abc@gmail.com",gender:"male",ip_address:"27:0:0:1",age:26}])
+
+db.users.find().preety()
+db.users.findOne({last_name:"Xyz"},{first_name:"Abc"}).preety()
+
+db.users.update({_id:ObjectId("id")},{$set:{lasr_name:"Mno"}})
+db.users.updateMany({first_name:"Abc"},{$set:{first_name:"Def"}})
+
+db.users.remove({_id:ObjectId("id")})
+db.deleteOne({_id:ObjectId("id")})
+db.deleteOne({first_name:"Abc"})
+
+db.users.find({age:{$eq:27}})//equal to
+db.users.find({age:{$ne:27}})//not equal to
+db.users.find({age:{$gt:27}})//greater then
+db.users.find({age:{$gte:27}})//greater then equal
+db.users.find({age:{$lt:27}})//less then
+db.users.find({age:{$lte:27}})//less then equal
+
+
+db.droupDatabase()
+db.collection.droup()
+db.createCollection('users')
+
+
+
+
+
+//
+db.assignment.find({movie_name: "abc"},{movie_name : 1, production_year: 1});
+
+db.assignment.find({$not :{$eq : {movie_name: "abc"}}},{movie_name : 1, production_year: 1});
+
+db.assignment.find({$gte :{budget: 10000}}},{movie_name : 1, production_year: 1});
+
+db.assignment.find({$lte :{budget: 10000}}},{movie_name : 1, production_year: 1});
+
+db.assignment.find({$and :[{$gte :{budget: 10000}} , {$gte :{production_year: 2000 }}]},{movie_name : 1, production_year: 1});
+
+db.assignment.find({$not :{$or :[{$gte :{budget: 10000}} , {$gte :{production_year: 2000 }}]}},{movie_name : 1, production_year: 1});
+
+db.assignment.find({$not :{$or :[{$eq :{budget: 10000}} , {$eq :{production_year: 2000 }}]}},{movie_name : 1, production_year: 1});
+
+db.assignment.find({$in :{$gte :{production_year: 2000 }} , {$lte :{production_year: 2010 }}},{movie_name : 1, production_year: 1});
+
+db.assignment.find({},{movie_name : 1, production_year: 1}).sort({production_year: 1}, {movie_name: "abc"}).skip(10).limit(5);
+
+db.assignment.remove({}).limit(10);
+
+//advance queries
+//Array Queries
+//all - used to find existance of that element in a array field
+db.users.find({tech: {$all: ['react', 'js']}});
+
+//size - find having array length equal to size
+db.users.find({tech: {$size: 2}}) 
+
+//elemMatch - find atleast some data that match to that criteria
+db.users.find({marks: {$elemMatch: {$eq: 100}}});
+
+//regex - regular expression - search queries
+db.users.find({tech: {$regex: /^re/gi}});
+
+//updateQueries
+//inc - increment
+db.users.updateOne({name: "Mr. A"}, {$inc: {age: 1}});
+//for decrement
+db.users.updateOne({name: "Mr. A"}, {$inc: {age: -1}});
+
+//set - set a fixed value
+db.users.updateOne({name: "Mr. A"}, {$set: {age: 20}});
+
+//min - set minimum if its value greater than min
+db.users.updateOne({name: "Mr. A"}, {$min: {age: 5}});
+//max - set maximum if its value lesser than min
+db.users.updateOne({name: "Mr. A"}, {$max: {age: 25}});
+
+// rename - rename a field key 
+db.users.updateOne({}, {$rename: {tech: "skills"}});
+
+
+//pop - remove an element in an array
+//-1 means from the first
+//1 means from the last
+db.users.updateOne({name: "Mr. A"}, {$pop: {tech: -1}});
+
+//push - add an elem from the end
+db.users.updateOne({name: "Mr. A"}, {$push: {tech: 56}});
+
+//sort - sort the order
+db.users.updateOne({name: "Mr. A"}, {$sort: {tech: 1}});
+
+
