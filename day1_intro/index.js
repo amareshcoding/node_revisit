@@ -1,13 +1,120 @@
-// const { sum, sub, mul } = require('./test');
+const {
+  sum,
+  sub,
+  mul,
+  divide,
+  sin,
+  cos,
+  tan,
+  randomIntFun,
+  randomIntFunInLim,
+} = require('./test');
+//
 const isEven = require('is-even');
 const os = require('os');
 const path = require('path');
 const fs = require('fs');
 
-// console.log('mul: ', mul(2, 4));
-// console.log('sub: ', sub(3, 2));
-// console.log('sum: ', sum(3, 5));
+console.log(process.argv);
 
+let fun = process.argv[2];
+// console.log('fun: ', fun);
+let arg1 = Number(process.argv[3]);
+let arg2 = +process.argv[4];
+
+switch (fun) {
+  case 'sum': {
+    let res = sum(arg1, arg2);
+    console.log('res: ', res);
+    break;
+  }
+  case 'sub': {
+    let res = sub(arg1, arg2);
+    console.log('res: ', res);
+    break;
+  }
+  case 'mul': {
+    let res = mul(arg1, arg2);
+    console.log('res: ', res);
+    break;
+  }
+  case 'divide': {
+    let res = divide(arg1, arg2);
+    console.log('res: ', res);
+    break;
+  }
+  case 'sin': {
+    let res = sin(arg1);
+    console.log('res: ', res);
+    break;
+  }
+  case 'cos': {
+    let res = cos(arg1);
+    console.log('res: ', res);
+    break;
+  }
+  case 'tan': {
+    let res = tan(arg1);
+    console.log('res: ', res);
+    break;
+  }
+  case 'random': {
+    let res = randomIntFun();
+    console.log('res: ', res);
+    break;
+  }
+  case 'randomInLim': {
+    let res = randomIntFunInLim();
+    console.log('res: ', res);
+  }
+}
+
+// fs.open('test.txt', 'w', function (err, file) {
+//   if (err) throw err;
+//   console.log('Saved!');
+// }); // create
+
+// fs.writeFileSync('./test.txt', 'writing random text'); // to write
+
+// fs.appendFileSync('./test.txt', ' appended text'); // append
+
+// const content = fs.readFile(
+//   './test.txt',
+//   { encoding: 'utf-8' },
+//   (err, data) => {
+//     console.log('readData: ', data);
+//   }
+// ); //read
+
+// fs.rename('./test.txt', './newtest.txt', (err) => {
+//   if (err) throw err;
+//   console.log('Rename complete!');
+// }); //rename
+
+// fs.unlinkSync('./newtest.txt'); // to remove
+
+// fs.readdir('../day1_intro', (err, files) => {
+//   files.forEach((file) => {
+//     console.log(file);
+//   });
+// });
+
+const directory = './';
+const dir = fs.readdir(directory, (err, d) => {
+  if (err) throw err;
+  console.log(d);
+});
+
+// fs.readdirSync(directory).forEach((file) => {
+//   if (fs.lstatSync(path.resolve(directory, file)).isDirectory()) {
+//     console.log('Directory: ' + file);
+//   } else {
+//     console.log('File: ' + file);
+//   }
+// });
+
+//
+//
 // console.log(isEven(6));
 
 // console.log(os.cpus());
@@ -75,38 +182,6 @@ const fs = require('fs');
 //   console.log(`Hi ${answers.name}!`);
 // });
 
-// console.log(process.argv);
-
-let fun = process.argv[2];
-let arg1 = +process.argv[3];
-let arg2 = +process.argv[4];
-
-const add = (a, b) => a + b;
-const sub = (a, b) => Math.abs(a - b);
-
-if (fun == 'add') {
-  let res = add(arg1, arg2);
-  console.log('res: ', res);
-} else if (fun == 'sub') {
-  let res = sub(arg1, arg2);
-  console.log('res: ', res);
-}
-
-// Random Number by crypto
-// const crypto = require('crypto');
-
-// const inputstr = process.argv[2];
-// if (inputstr == 'random') {
-//   const n = crypto.randomInt(11);
-//   console.log(`Random number is: ${n}`);
-// }
-
-// With `min` argument
-// const { randomInt } = require('crypto');
-
-// const n = randomInt(1, 7);
-// console.log(`The dice rolled: ${n}`);
-
 // fs.open('test.txt', 'w', function (err, file) {
 //      if (err) throw err;
 //      console.log('Saved!');
@@ -126,11 +201,11 @@ if (fun == 'add') {
 //   console.log('Rename complete!');
 // });//rename
 
-fs.readdir('../day1_intro', (err, files) => {
-  files.forEach((file) => {
-    console.log(file);
-  });
-});
+// fs.readdir('../day1_intro', (err, files) => {
+//   files.forEach((file) => {
+//     console.log(file);
+//   });
+// });
 
 // fs.readdirSync(directory).forEach((file) => {
 //   if (fs.lstatSync(path.resolve(directory, file)).isDirectory()) {
