@@ -1,9 +1,4 @@
-
 // model-view-controller (MVC)
-
-
-
-
 
 // }
 // const arr = [2, 2, 2, 3, 5, 5, 5, 7, 9]
@@ -53,16 +48,6 @@
 // git remote add origin https://github.com/amareshcoding/node.git
 // git push -u origin main
 
-
-
-
-
-
-
-
-
-
-
 // 1> file upload from frontend
 // 2> query filter
 // const {title} = req.query
@@ -84,3 +69,13 @@
 
 // 4> auth middleware
 // 5> basic redux
+
+//
+// const str = 'flexiple';
+// const str2 = str.slice(1);
+// console.log(str2);
+
+var str = 'INDIA';
+str = str.toLowerCase();
+str = str.charAt(0).toUpperCase() + str.slice(1);
+console.log('str: ', str);

@@ -18,23 +18,30 @@ const pageNotFound = fs.readFileSync(`${__dirname}/notfound.html`, {
 // const data2 = fs.readFile('./test.txt', { encoding: 'utf-8' }, (err, data) => {
 //   console.log('readData: ', data);
 // });
-// const stream = createReadStream('test.txt');
-// stream.on('data', (dataChunk) => {
-//   res.write(dataChunk);
-// });
-// stream.on('end', () => {
-//   res.end();
-// });
-// stream.on('error', (err) => {
-//   console.log('err: ', err);
-//   res.end();
-// });
+const stream = createReadStream('./test.txt', { encoding: 'utf8' });
+stream.on('data', (dataChunk) => {
+  res.write(dataChunk);
+});
+// async function logChunks(stream) {
+//   for await (const chunk of stream) {
+//     console.log(chunk);
+//   }
+// }
+logChunks(stream)
+stream.on('end', () => {
+  res.end();
+});
+stream.on('error', (err) => {
+  console.log('err: ', err);
+  res.end();
+});
 
 const homePage = fs.readFileSync(`${__dirname}/index.html`, {
   encoding: 'utf-8',
 });
 
 const server = http.createServer((req, res) => {
+  console.log(req.url)
   let message = 'Welcome to ';
 
   switch (req.url) {
@@ -78,6 +85,11 @@ const server = http.createServer((req, res) => {
         res.write(` /${file}`);
       });
       break;
+    }
+    case "/textsync":{
+      console.time("t1")
+      //operation
+      console.timeEnd("t1")
     }
     default: {
       res.write(pageNotFound);

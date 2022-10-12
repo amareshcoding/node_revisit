@@ -21,7 +21,7 @@ userRoute.post(
   body('first_name')
     .isString()
     .isLength({ min: 3, max: 20 })
-    .withMessage('first name must be from 8 to 20 chars'),
+    .withMessage('first name must be from 3 to 20 chars'),
   body('last_name')
     .isString()
     .isLength({ min: 3, max: 20 })
