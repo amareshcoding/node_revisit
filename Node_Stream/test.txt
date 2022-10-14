@@ -1,0 +1,13 @@
+[nodemon] starting `node server.js`
+listening on port 8000
+[nodemon] restarting due to changes..[nodemon] starting `node server.js`
+listening on port 8000
+[nodemon] restarting due to changes..[nodemon] starting `node server.js`
+listening on port 8000
+[nodemon] restarting due to changes..[nodemon] starting `node server.js`
+listening on port 8000
+[nodemon] restarting due to changes..[nodemon] starting `node server.js`
+listening on port 8000
+[nodemon] restarting due to changes..[nodemon] starting `node server.js`
+listening on port 8000
+[nodemon] restarting due to changes..
