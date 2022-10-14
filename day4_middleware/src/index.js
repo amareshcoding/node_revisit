@@ -78,23 +78,23 @@ var morgan = require('morgan');
 // morgan.token('id', function getId(req) {
 //   return req.id;
 // });
-// app.use(
-//   morgan(function (tokens, req, res) {
-//     return [
-//       tokens.method(req, res),
-//       tokens.url(req, res),
-//       tokens.status(req, res),
-//       tokens.res(req, res, 'content-length'),
-//       '-',
-//       tokens['response-time'](req, res),
-//       'ms',
-//       tokens['date'](req, res),
-//       tokens['http-version'](req, res),
-//       // tokens['id'](req, res),
-//       // tokens['token'](req, res),
-//     ].join(' ');
-//   })
-// );
+app.use(
+  morgan(function (tokens, req, res) {
+    return [
+      tokens.method(req, res),
+      tokens.url(req, res),
+      tokens.status(req, res),
+      tokens.res(req, res, 'content-length'),
+      '-',
+      tokens['response-time'](req, res),
+      'ms',
+      tokens['date'](req, res),
+      tokens['http-version'](req, res),
+      // tokens['id'](req, res),
+      // tokens['token'](req, res),
+    ].join(' ');
+  })
+);
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));

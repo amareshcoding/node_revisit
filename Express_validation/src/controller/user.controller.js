@@ -44,9 +44,9 @@ userRoute.post(
     .withMessage('password must be between 8 to 12 chars.')
     .bail()
     .custom(async (value) => {
-      const ckeckPass =
+      const passRegex =
         /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
-      if (ckeckPass.test(value)) {
+      if (passRegex.test(value)) {
         return true;
       }
       throw new Error('Password is not Strong');
@@ -70,3 +70,5 @@ userRoute.post(
   }
 );
 module.exports = userRoute;
+
+// var emailregex = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;

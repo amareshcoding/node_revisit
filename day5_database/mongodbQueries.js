@@ -61,7 +61,8 @@
 // db.assignment.find({},{movie_name : 1, production_year: 1}).sort({production_year: 1}, {movie_name: "abc"}).skip(10).limit(5);
 
 // db.assignment.remove({}).limit(10);
-
+//
+// { field: { $mod: [ divisor, remainder ] } }
 //advance queries
 //Array Queries
 //all - used to find existance of that element in a array field
