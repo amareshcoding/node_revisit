@@ -5,8 +5,10 @@ const postRoute = Router();
 
 postRoute.get('/', async (req, res) => {
   try {
-    const post = await Post.find();
-    // .populate({ path: 'fans', select: 'email' });
+    const post = await Post.find().populate({
+      path: 'user_id',
+      select: ['name', 'email', 'image'],
+    });
     res.send(post);
   } catch (err) {
     res.status(500).send(err.message);
